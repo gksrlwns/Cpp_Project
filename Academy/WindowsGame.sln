@@ -7,12 +7,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowsGame", "WindowsGame\
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug_Academy|x64 = Debug_Academy|x64
+		Debug_Academy|x86 = Debug_Academy|x86
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A1B8394-EB26-406D-8136-CB87FCF10877}.Debug_Academy|x64.ActiveCfg = Debug_Academy|x64
+		{5A1B8394-EB26-406D-8136-CB87FCF10877}.Debug_Academy|x64.Build.0 = Debug_Academy|x64
+		{5A1B8394-EB26-406D-8136-CB87FCF10877}.Debug_Academy|x86.ActiveCfg = Debug_Academy|Win32
+		{5A1B8394-EB26-406D-8136-CB87FCF10877}.Debug_Academy|x86.Build.0 = Debug_Academy|Win32
 		{5A1B8394-EB26-406D-8136-CB87FCF10877}.Debug|x64.ActiveCfg = Debug|x64
 		{5A1B8394-EB26-406D-8136-CB87FCF10877}.Debug|x64.Build.0 = Debug|x64
 		{5A1B8394-EB26-406D-8136-CB87FCF10877}.Debug|x86.ActiveCfg = Debug|Win32

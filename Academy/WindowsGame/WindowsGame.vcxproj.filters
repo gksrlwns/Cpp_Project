@@ -27,13 +27,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Comment1.md">
+    <None Include="Comment01.md">
       <Filter>Comment</Filter>
     </None>
-    <None Include="Comment2.md">
+    <None Include="Comment02.md">
       <Filter>Comment</Filter>
     </None>
-    <None Include="Comment3.md">
+    <None Include="Comment03.md">
+      <Filter>Comment</Filter>
+    </None>
+    <None Include="Comment04.md">
       <Filter>Comment</Filter>
     </None>
   </ItemGroup>
@@ -42,6 +45,9 @@
       <Filter>99.Utils</Filter>
     </ClInclude>
     <ClInclude Include="CommonFunction.h">
+      <Filter>99.Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
       <Filter>99.Utils</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,6 +14,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <windowsx.h>
 
 #include <iostream>
 #include <format>
@@ -25,6 +26,22 @@
 #include <algorithm>
 #include <string>
 using namespace std;
+
+//==========================================
+//	## 자료구조 헤더 ##
+//==========================================
+#include <vector>
+#include <map>
+#include <set>
+#include <queue>
+#include <unordered_map>
+#include <unordered_set>
+
+
+//==========================================
+//	## Define 설정 ##
+//==========================================
+#include "Defines.h"
 
 
 //==========================================

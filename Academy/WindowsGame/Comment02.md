@@ -165,7 +165,8 @@ LRESULT WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 wParam - x좌표
 lParam - y좌표
 
-키보드를 눌렀다
+키보드를 눌렀다0
+
 wParam - 어떤 키를 눌렀는지
 lParam - 사용안함.
 ```
