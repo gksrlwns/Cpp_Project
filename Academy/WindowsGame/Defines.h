@@ -14,3 +14,20 @@
 #endif
 
 #define WIN_START_Y 0
+
+
+//==========================================
+//	## 싱글톤 선언 ##
+//==========================================
+#define DECLARE_SINGLE(ClassName)			\
+private:									\
+	ClassName() {}							\
+	~ClassName() {}							\
+public:										\
+	static ClassName* GetInstance()			\
+	{										\
+		static ClassName instance;			\
+		return &instance;					\
+	}
+
+#define GET_SINGLE(ClassName)	ClassName::GetInstance()

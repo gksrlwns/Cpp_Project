@@ -14,6 +14,15 @@
     <Filter Include="99.Utils">
       <UniqueIdentifier>{03551ffc-c4d3-4953-a1aa-0f4a37b72a68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="99.Utils\Types">
+      <UniqueIdentifier>{b299613e-3456-41b1-bc03-d3d7e40dbeec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Managers">
+      <UniqueIdentifier>{20c3a18b-3d27-487a-a009-b54084818d97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Objects">
+      <UniqueIdentifier>{9e809d43-93b2-47b1-8c35-82b0d119e09b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WindowsMain.cpp">
@@ -24,6 +33,27 @@
     </ClCompile>
     <ClCompile Include="CommonFunction.cpp">
       <Filter>99.Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="CenterRect.cpp">
+      <Filter>99.Utils\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>99.Utils\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>00.MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>01.Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Day17Player.cpp">
+      <Filter>02.Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>01.Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Day17Box.cpp">
+      <Filter>02.Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +69,27 @@
     <None Include="Comment04.md">
       <Filter>Comment</Filter>
     </None>
+    <None Include="Comment05.md">
+      <Filter>Comment</Filter>
+    </None>
+    <None Include="Comment06.md">
+      <Filter>Comment</Filter>
+    </None>
+    <None Include="Comment07.md">
+      <Filter>Comment</Filter>
+    </None>
+    <None Include="Comment08.md">
+      <Filter>Comment</Filter>
+    </None>
+    <None Include="Comment09.md">
+      <Filter>Comment</Filter>
+    </None>
+    <None Include="Comment10.md">
+      <Filter>Comment</Filter>
+    </None>
+    <None Include="Comment11.md">
+      <Filter>Comment</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -49,6 +100,30 @@
     </ClInclude>
     <ClInclude Include="Defines.h">
       <Filter>99.Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CenterRect.h">
+      <Filter>99.Utils\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>99.Utils\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>00.MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>01.Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Day17Player.h">
+      <Filter>02.Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>99.Utils\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>01.Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Day17Box.h">
+      <Filter>02.Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug_Academy|Win32">
@@ -219,7 +219,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Comment05.md">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|x64'">false</ExcludedFromBuild>
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Comment07.md">
+      <FileType>Document</FileType>
+    </None>
+    <ClCompile Include="CenterRect.cpp" />
     <ClCompile Include="CommonFunction.cpp" />
+    <ClCompile Include="Day17Player.cpp" />
+    <ClCompile Include="Day17Box.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|Win32'">Create</PrecompiledHeader>
@@ -228,12 +241,27 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="WindowsMain.cpp" />
+    <None Include="Comment06.md" />
+    <None Include="Comment08.md" />
+    <None Include="Comment09.md" />
+    <None Include="Comment10.md" />
+    <None Include="Comment11.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CenterRect.h" />
     <ClInclude Include="CommonFunction.h" />
+    <ClInclude Include="Day17Player.h" />
+    <ClInclude Include="Day17Box.h" />
     <ClInclude Include="Defines.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="Types.h" />
+    <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Comment04.md" />
