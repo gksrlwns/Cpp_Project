@@ -38,7 +38,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Day1_Comment.md" />
-    <None Include="Day2_Comment.md" />
+    <None Include="Day3_Comment.md" />
   </ItemGroup>
 </Project>
