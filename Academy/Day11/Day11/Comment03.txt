@@ -1,0 +1,65 @@
+﻿클래스 기본 모토
+1. 캡슐화
+2. 상속
+3. 추상화
+4. 다형성
+
+SRP
+OCP
+LSP
+ISP
+DIP
+
+
+3. 추상화, 다형성
+
+class Dog : Animal
+{
+    void Breathe()
+    {
+        printf("멍멍");
+    }
+    void Cry()
+    {
+        printf("그르르르");
+    }
+};
+
+class Cat : Animal
+{
+    void Breathe()
+    {
+        printf("야옹");
+    }
+    void Cry()
+    {
+        printf("미야");
+    }
+};
+
+
+abstract class Animal
+{
+public:
+    void Breathe();
+    void Cry();
+};
+
+abstract -> 이 클래스는 실존하지는 않는 객체입니다.
+
+ - 이 클래스는 단순하게 메서드만 제공해주고,
+ - 실제구현은 상속받아서 정의해서 써라
+
+ - 외부에서는 추상화 클래스만 들고 사용하면 되게 유리하다.
+
+ Animal* arr[2] = {};
+
+ arr[0] = new Cat();
+ arr[1] = new Dog();
+
+ for(int i = 0; i< 2; i++)
+ {
+    arr[i]->Update();
+ }
+
+

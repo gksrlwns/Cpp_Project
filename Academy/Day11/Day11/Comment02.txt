@@ -1,0 +1,24 @@
+﻿클래스 기본 모토
+1. 캡슐화
+2. 상속
+3. 추상화
+4. 다형성
+
+2. 상속
+
+class Rabbit : Animal
+{
+};
+
+
+class Animal
+{
+public:
+    void Breathe();
+    void Cry();
+};
+
+ - Rabbit은 기본적으로 Animal의 내용을 쓸수있다.
+ - 재사용성이 있는 내용들은 상속을 통해서 잘써라
+
+

@@ -1,0 +1,25 @@
+﻿클래스-02
+
+ - 연산자 재정의
+
+
+ Time 클래스
+ (일, 시, 분, 초)
+ int day
+ int hour
+ int minute
+ int second
+ int millisecond
+
+
+ Time a;
+ Time b;
+
+
+ Time c = a + b;
+
+
+
+
+ // 숙제1. LinkedList 암기
+ // 숙제2. Vector 암기
