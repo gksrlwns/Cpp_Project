@@ -11,6 +11,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vector", "Vector\Vector.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinaryTree", "BinaryTree\BinaryTree.vcxproj", "{B19276C6-EE31-42E3-9E0F-F7A4F31DE624}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루션 항목", "{83CD05DC-2B91-4E4C-B720-850A0360895C}"
+	ProjectSection(SolutionItems) = preProject
+		Day11_Comment.md = Day11_Comment.md
+		Day12_Comment.md = Day12_Comment.md
+		OOP.md = OOP.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
