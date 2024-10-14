@@ -240,6 +240,7 @@
     <None Include="Comment01.md" />
     <None Include="Comment02.md" />
     <None Include="Comment03.md" />
+    <None Include="Day14_Comment.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

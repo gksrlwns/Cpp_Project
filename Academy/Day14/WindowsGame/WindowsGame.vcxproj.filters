@@ -39,6 +39,9 @@
     <None Include="Comment04.md">
       <Filter>Comment</Filter>
     </None>
+    <None Include="Day14_Comment.md">
+      <Filter>Comment</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

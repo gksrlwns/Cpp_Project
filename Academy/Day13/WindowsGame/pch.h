@@ -25,7 +25,7 @@
 #include <algorithm>
 #include <string>
 using namespace std;
-
+using namespace Draw;
 
 //==========================================
 //	## Custom 헤더 ##
