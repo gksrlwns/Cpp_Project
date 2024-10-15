@@ -229,6 +229,11 @@
     </None>
     <ClCompile Include="CenterRect.cpp" />
     <ClCompile Include="CommonFunction.cpp" />
+    <ClCompile Include="Day17Player.cpp" />
+    <ClCompile Include="Day17Box.cpp" />
+    <ClCompile Include="Day17Scene.cpp" />
+    <ClCompile Include="Day18Scene.cpp" />
+    <ClCompile Include="DevScene.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="pch.cpp">
@@ -239,20 +244,35 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="WindowsMain.cpp" />
     <None Include="Comment06.md" />
     <None Include="Comment08.md" />
     <None Include="Comment09.md" />
-    <None Include="Day16_Comment.md" />
+    <None Include="Comment10.md" />
+    <None Include="Comment11.md" />
+    <None Include="Comment12.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterRect.h" />
     <ClInclude Include="CommonFunction.h" />
+    <ClInclude Include="Day17Player.h" />
+    <ClInclude Include="Day17Box.h" />
+    <ClInclude Include="Day17Scene.h" />
+    <ClInclude Include="Day18Scene.h" />
     <ClInclude Include="Defines.h" />
+    <ClInclude Include="DevScene.h" />
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="Types.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <ItemGroup>

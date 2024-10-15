@@ -1,0 +1,94 @@
+﻿#include "pch.h"
+#include "SceneManager.h"
+#include "Scene.h"
+#include "DevScene.h"
+#include "Day17Scene.h"
+#include "Day18Scene.h"
+void SceneManager::Init()
+{
+
+}
+
+void SceneManager::Render(HDC hdc)
+{
+	if (_scene)
+	{
+		_scene->Render(hdc);
+	}
+}
+
+void SceneManager::Update()
+{
+	if (_scene)
+	{
+		_scene->Update();
+	}
+
+
+	if (_nextSceneType == SceneType::None)
+	{
+		return;
+	}
+
+	//==========================================
+	//	## Change Scene Logic
+	//==========================================
+	
+	// 1. 기존 씬 해제
+	if (_scene)
+	{
+		_scene->Release();
+	}
+
+	// 2. 새로운씬을 생성
+	Scene* newScene = this->CreateScene(_nextSceneType);
+	
+	// 3. 기존 씬포인터에 덮어쓰기
+	SAFE_DELETE(_scene);
+	_scene = newScene;
+	_sceneType = _nextSceneType;
+	_nextSceneType = SceneType::None;
+
+	// 4. 새로운씬 초기화 
+	newScene->Init();
+
+}
+
+void SceneManager::Release() 
+{
+
+}
+
+Scene* SceneManager::CreateScene(SceneType sceneType)
+{
+	Scene* scene = nullptr;
+
+	switch (sceneType)
+	{
+	case SceneType::None:
+		break;
+	case SceneType::DevScene:
+		scene = new DevScene();
+		break;
+	case SceneType::Day17Scene:
+		scene = new Day17Scene();
+		break;
+	case SceneType::Day18Scene:
+		scene = new Day18Scene();
+		break;
+	default:
+		break;
+	}
+	
+	return scene;
+}
+
+void SceneManager::ChangeScene(SceneType sceneType)
+{
+	if (_sceneType == sceneType)
+	{
+		return;
+	}
+
+	_nextSceneType = sceneType;
+}
