@@ -22,5 +22,6 @@ private: // 더블버퍼링 변수
 private:
 	InputManager _input;
 	CenterRect _player;
+	CenterRect _otherRect;
 };
 

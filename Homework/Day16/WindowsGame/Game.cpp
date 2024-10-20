@@ -36,33 +36,56 @@ void Game::Init(HWND hWnd)
 	_input.Init(_hwnd);
 
 
-	_player = CenterRect(300, 100, 80, 80);
+	_player = CenterRect(300, 300, 50, 50);
+	_otherRect = CenterRect(300, 300, 100, 100);
 }
 
 void Game::Update()
 {
 	_input.Update();
 
+	RECT temp;
+	RECT rc1 = _player.ToRect();
+	RECT rc2 = _otherRect.ToRect();
 	if (_input.GetKey(KeyCode::Left))
 	{
 		_player.pos.x -= 0.5;
+		
+		if (Collision::RectInRect(_player, _otherRect))
+		{
+			_otherRect.pos.x -= 0.5;
+		}
 	}
 	if (_input.GetKey(KeyCode::Up))
 	{
 		_player.pos.y -= 0.5;
+		if (Collision::RectInRect(_player, _otherRect))
+		{
+			_otherRect.pos.y -= 0.5;
+		}
 	}
 	if (_input.GetKey(KeyCode::Right))
 	{
+
 		_player.pos.x += 0.5;
+		if (Collision::RectInRect(_player, _otherRect))
+		{
+			_otherRect.pos.x += 0.5;
+		}
 	}
 	if (_input.GetKey(KeyCode::Down))
 	{
 		_player.pos.y += 0.5;
+		if (Collision::RectInRect(_player, _otherRect))
+		{
+			_otherRect.pos.y += 0.5;
+		}
 	}
 }
 
 void Game::Render()
 {
+	_otherRect.Draw(_hdcBack);
 	_player.Draw(_hdcBack);
 
 	//==========================================
