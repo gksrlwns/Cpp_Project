@@ -22,6 +22,7 @@ struct Vector2
 	bool operator==(const Vector2 other);
 	bool operator!=(const Vector2 other);
 
+	//인라인 : 접근이 빠른 곳에 CPU 메모리에 놔둬주세요
 	inline static Vector2 Zero()
 	{
 		return Vector2(0, 0);
