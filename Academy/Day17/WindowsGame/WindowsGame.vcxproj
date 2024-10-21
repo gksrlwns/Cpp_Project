@@ -219,6 +219,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="소스.cpp" />
     <None Include="Comment05.md">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|x64'">false</ExcludedFromBuild>
@@ -249,6 +250,7 @@
     <None Include="Comment09.md" />
     <None Include="Comment10.md" />
     <None Include="Comment11.md" />
+    <None Include="Day17_Comment.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterRect.h" />

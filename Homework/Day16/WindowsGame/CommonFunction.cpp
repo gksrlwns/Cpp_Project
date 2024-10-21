@@ -79,10 +79,5 @@ namespace Collision
 
 		return false;
 	}
-
-	bool RectOutRect(CenterRect centerRect1, CenterRect centerRect2)
-	{
-		return false;
-	}
 	
 }

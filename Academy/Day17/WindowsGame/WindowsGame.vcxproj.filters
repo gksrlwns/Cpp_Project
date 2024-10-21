@@ -55,6 +55,9 @@
     <ClCompile Include="Day17Box.cpp">
       <Filter>02.Objects</Filter>
     </ClCompile>
+    <ClCompile Include="소스.cpp">
+      <Filter>00.MainGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Comment01.md">
@@ -88,6 +91,9 @@
       <Filter>Comment</Filter>
     </None>
     <None Include="Comment11.md">
+      <Filter>Comment</Filter>
+    </None>
+    <None Include="Day17_Comment.md">
       <Filter>Comment</Filter>
     </None>
   </ItemGroup>
