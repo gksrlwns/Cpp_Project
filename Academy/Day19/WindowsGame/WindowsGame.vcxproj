@@ -233,7 +233,9 @@
     <ClCompile Include="Day17Box.cpp" />
     <ClCompile Include="Day17Scene.cpp" />
     <ClCompile Include="Day18Scene.cpp" />
-    <ClCompile Include="Day19Scene.cpp" />
+    <ClCompile Include="Day19Scene.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="DevScene.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputManager.cpp" />

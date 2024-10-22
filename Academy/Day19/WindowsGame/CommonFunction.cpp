@@ -22,6 +22,7 @@ namespace Draw
 	}
 }
 
+
 namespace Collision
 {
 	bool PtInRect(POINT pt, RECT rc)

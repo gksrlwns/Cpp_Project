@@ -157,27 +157,27 @@ void Day18Scene::Update_Play()
 	//2. 볼이 벽에 튕기면 반사되어야합니다.
 	if (_ball.Top() < 0)
 	{
-		_ball.pos -= _ballDir * _ballSpeed * Time->GetDeltaTime();
+		//_ball.pos -= _ballDir * _ballSpeed * Time->GetDeltaTime();
 		_ballDir = _ballDir.Reflect(Vector2::Down());
 		printf("_ballDir : %f, %f\n", _ballDir.x, _ballDir.y);
 	}
 	else if (WIN_SIZE_Y < _ball.Bottom())
 	{
-		_ball.pos -= _ballDir * _ballSpeed * Time->GetDeltaTime();
+		//_ball.pos -= _ballDir * _ballSpeed * Time->GetDeltaTime();
 		_ballDir = _ballDir.Reflect(Vector2::Up());
 	}
 
 	//3. 볼이 왼쪽벽에 부딪히면
 	if (Collision::RectInRect(_leftWall, _ball) && _leftWall.Right() < _ball.pos.x)
 	{
-		_ball.pos -= _ballDir * _ballSpeed * Time->GetDeltaTime();
+		//_ball.pos -= _ballDir * _ballSpeed * Time->GetDeltaTime();
 		_ballDir = _ballDir.Reflect(Vector2::Right());
 	}
 
 	//4. 볼이 오른쪽쪽벽에 부딪히면
 	if (Collision::RectInRect(_rightWall, _ball) && _ball.pos.x < _rightWall.Left())
 	{
-		_ball.pos -= _ballDir * _ballSpeed * Time->GetDeltaTime();
+		//_ball.pos -= _ballDir * _ballSpeed * Time->GetDeltaTime();
 		_ballDir = _ballDir.Reflect(Vector2::Left());
 	}
 
