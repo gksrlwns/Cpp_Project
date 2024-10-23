@@ -41,7 +41,7 @@ void Game::Init(HWND hWnd)
 	Resource->Init();
 
 	GET_SINGLE(SceneManager)->Init();
-	GET_SINGLE(SceneManager)->ChangeScene(SceneType::Day19Scene);
+	GET_SINGLE(SceneManager)->ChangeScene(SceneType::Omok);
 }
 
 void Game::Update()

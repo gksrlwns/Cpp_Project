@@ -227,30 +227,19 @@
     <None Include="Comment07.md">
       <FileType>Document</FileType>
     </None>
-    <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="CenterRect.cpp" />
-    <ClCompile Include="Collider.cpp" />
-    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="CommonFunction.cpp" />
-    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Day17Player.cpp" />
     <ClCompile Include="Day17Box.cpp" />
     <ClCompile Include="Day17Scene.cpp" />
     <ClCompile Include="Day18Scene.cpp" />
-    <ClCompile Include="Day19Scene.cpp" />
-    <ClCompile Include="Day19Stone.cpp" />
-    <ClCompile Include="Day20Scene.cpp" />
-    <ClCompile Include="Day21Ball.cpp" />
-    <ClCompile Include="Day21Paddle.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|x64'">false</ExcludedFromBuild>
+    <ClCompile Include="Day19Scene.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Day21Scene.cpp" />
-    <ClCompile Include="Day22Scene.cpp" />
     <ClCompile Include="DevScene.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Omok.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|Win32'">Create</PrecompiledHeader>
@@ -259,13 +248,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="RandomManager.cpp" />
     <ClCompile Include="ResourceBase.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="SpriteRenderer.cpp" />
+    <ClCompile Include="Stone.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Vector2.cpp" />
@@ -278,46 +266,30 @@
     <None Include="Comment11.md" />
     <None Include="Comment12.md" />
     <None Include="Comment13.md" />
-    <None Include="Comment14.md" />
-    <None Include="Comment15.md" />
-    <None Include="Comment16.md" />
-    <None Include="Day22_Comment.md" />
+    <None Include="Day19_Comment.md" />
+    <None Include="Day20_Comment.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="CenterRect.h" />
-    <ClInclude Include="Collider.h" />
-    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="CommonFunction.h" />
-    <ClInclude Include="Component.h" />
     <ClInclude Include="Day17Player.h" />
     <ClInclude Include="Day17Box.h" />
     <ClInclude Include="Day17Scene.h" />
     <ClInclude Include="Day18Scene.h" />
     <ClInclude Include="Day19Scene.h" />
-    <ClInclude Include="Day19Stone.h" />
-    <ClInclude Include="Day20Scene.h" />
-    <ClInclude Include="Day21Ball.h" />
-    <ClInclude Include="Day21Paddle.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_Academy|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="Day21Scene.h" />
-    <ClInclude Include="Day22Scene.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="DevScene.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Omok.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="RandomManager.h" />
     <ClInclude Include="ResourceBase.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Sprite.h" />
-    <ClInclude Include="SpriteRenderer.h" />
+    <ClInclude Include="Stone.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Types.h" />
