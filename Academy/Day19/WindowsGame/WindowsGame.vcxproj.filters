@@ -138,6 +138,9 @@
     <None Include="Comment13.md">
       <Filter>Comment</Filter>
     </None>
+    <None Include="Day19_Comment.md">
+      <Filter>Comment</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

@@ -264,6 +264,7 @@
     <None Include="Comment11.md" />
     <None Include="Comment12.md" />
     <None Include="Comment13.md" />
+    <None Include="Day19_Comment.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterRect.h" />
