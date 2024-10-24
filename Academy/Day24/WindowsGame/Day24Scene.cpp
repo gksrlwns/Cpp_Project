@@ -1,8 +1,16 @@
 ﻿#include "pch.h"
 #include "Day24Scene.h"
+#include "Day24Creature.h"
 void Day24Scene::Init()
 {
 	Super::Init();
+
+	{
+		Day24Creature* gameObject = new Day24Creature();
+		gameObject->Init();
+		this->SpawnGameObject(gameObject);
+		_creature = gameObject;
+	}
 }
 void Day24Scene::Render(HDC hdc)
 {
@@ -17,6 +25,21 @@ void Day24Scene::Render(HDC hdc)
 void Day24Scene::Update()
 {
 	Super::Update();
+
+	if (Input->GetKey(KeyCode::W))
+	{
+		_creature->SetDir(Day24CreatureDir::Up);
+		_creature->SetState(Day24CreatureState::Move);
+	}
+	else if (Input->GetKey(KeyCode::S))
+	{
+		_creature->SetDir(Day24CreatureDir::Down);
+		_creature->SetState(Day24CreatureState::Move);
+	}
+	else
+	{
+		_creature->SetState(Day24CreatureState::Idle);
+	}
 }
 void Day24Scene::Release()
 {

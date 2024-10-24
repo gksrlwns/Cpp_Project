@@ -43,3 +43,32 @@
 
  git좀 써주세요.
 ```
+
+```
+ 정리 
+
+  1. Day24-1.zip 받고 git에 커밋해주세요.
+  2. 일단 오늘하루먼저 실습해보겠습니다.
+  3. git에 커밋하고 알려주시면 실습 바로 시작할게요.
+   실습은 숙제내용부터 해보겠습니다.
+    - 1. 캐릭터 소환해서 wasd로 움직이게 하기.
+      - Flipbook 변하게하는건
+      - Day21Ball 참고해서
+      - State와 Dir 변수를 두고
+      - SetState와 SetDir 할때, Flipbook을 변경해주면 됩니다.
+      - 포인트는 FlipbookRenderer를 어떻게 접근할수있을까.
+       (되도록이면 새롭게만든 오브젝트에서 FlipbookRenderer를 AddComponent하는 형식이 좋겠죠)
+    - 아무거나 화면에 띄워보세요.
+
+```
+
+
+```
+ 깃 명령어 3개
+ git add .
+ git commit -m "commit"
+ git push
+```
+
+
+### 실습시간은 막히면 질문하는 시간이에요
