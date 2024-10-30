@@ -228,6 +228,7 @@ void Day24Creature::Shoot(Vector2 dir)
 		Day24BulletInfo info;
 		info.Dir = dir;
 		info.Speed = 1000;
+		info.Damage = 50;
 		gameObject->SetInfo(info);
 		gameObject->SetState(EDay24BulletState::Move);
 		CurrentScene->SpawnGameObject(gameObject);

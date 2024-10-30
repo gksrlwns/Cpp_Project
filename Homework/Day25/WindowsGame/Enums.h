@@ -26,5 +26,8 @@ enum CollisionLayerType
 	CLT_DEFAULT = 0,
 	CLT_CREATURE,
 	CLT_GROUND,
-	CLT_ITEM
+	CLT_ITEM,
+	CLT_ENEMY,
+	CLT_BULLET,
+	CLT_DEAD
 };

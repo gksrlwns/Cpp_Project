@@ -13,5 +13,7 @@ public:
 	virtual void Release() override;
 private:
 	Day24Creature* _creature = nullptr;
+	float _spawnTimer = 1.0f;
+	float _timer = 0;
 };
 

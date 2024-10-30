@@ -9,9 +9,9 @@ void BoxCollider::Render(HDC hdc)
 {
 	Super::Render(hdc);
 
-#ifdef _DEBUG
-	this->GetCollision().Draw(hdc);
-#endif
+//#ifdef _DEBUG
+//	this->GetCollision().Draw(hdc);
+//#endif
 }
 void BoxCollider::Update()
 {

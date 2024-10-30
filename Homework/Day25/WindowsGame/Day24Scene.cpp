@@ -5,6 +5,8 @@
 #include "BoxRenderer.h"
 #include "CameraComponent.h"
 #include "Day24Bullet.h"
+#include "Day24Enemy.h"
+#include "BoxCollider.h"
 void Day24Scene::Init()
 {
 	Super::Init();
@@ -35,7 +37,9 @@ void Day24Scene::Init()
 		_creature = gameObject;
 	}
 
-	{
+	
+
+	/*{
 		GameObject* gameObject = new GameObject();
 		gameObject->Init();
 		{
@@ -47,7 +51,7 @@ void Day24Scene::Init()
 		}
 		gameObject->SetBody(CenterRect(550, 200, 80, 80));
 		this->SpawnGameObject(gameObject);
-	}
+	}*/
 
 	//총알 진짜 생성되는지 테스트해보는 코드
 	//{
@@ -70,6 +74,23 @@ void Day24Scene::Render(HDC hdc)
 void Day24Scene::Update()
 {
 	Super::Update();
+	
+	_timer += Time->GetDeltaTime();
+	if (_timer >= _spawnTimer)
+	{
+		//Enemy 생성
+		{
+			Day24Enemy* enemy = new Day24Enemy();
+			float ranX = Random->GetFloat(0,300);
+			float ranY = Random->GetFloat(0,300);
+			Vector2 ranPos = Vector2(ranX, ranY);
+			enemy->Init();
+			enemy->SetPos(ranPos);
+			this->SpawnGameObject(enemy);
+			printf("스폰\n");
+		}
+		_timer = 0;
+	}
 
 	if (Input->GetKey(KeyCode::W))
 	{
@@ -112,10 +133,11 @@ void Day24Scene::Update()
 		_creature->Shoot(dir);
 	}
 
-	if (Input->GetKeyDown(KeyCode::J))
+	
+	/*if (Input->GetKeyDown(KeyCode::J))
 	{
 		_cameraPosition = { 500, 5 };
-	}
+	}*/
 }
 void Day24Scene::Release()
 {
