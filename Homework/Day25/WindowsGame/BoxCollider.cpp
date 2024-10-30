@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "BoxCollider.h"
 #include "GameObject.h"
+#include "Scene.h"
 void BoxCollider::Init()
 {
 	Super::Init();
@@ -9,9 +10,12 @@ void BoxCollider::Render(HDC hdc)
 {
 	Super::Render(hdc);
 
-//#ifdef _DEBUG
-//	this->GetCollision().Draw(hdc);
-//#endif
+#ifdef _DEBUG
+	CenterRect drawRect = this->GetCollision();
+	Vector2 camPos = CurrentScene->GetCameraPos();
+	drawRect.pos -= camPos;
+	drawRect.Draw(hdc);
+#endif
 }
 void BoxCollider::Update()
 {

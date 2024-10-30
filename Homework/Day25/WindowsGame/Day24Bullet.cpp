@@ -77,14 +77,14 @@ void Day24Bullet::OnTriggerEnter(Collider* collider, Collider* other)
 		if (other->GetCollisionLayer() == CLT_ENEMY)
 		{
 			Day24Enemy* enemy = dynamic_cast<Day24Enemy*>(other->GetOwner());
-			if (enemy == nullptr)
-			{
-				printf("enemy를 찾을 수 없음");
-			}
-			else
+			if (enemy != nullptr)
 			{
 				enemy->OnDamaged(_info.Damage);
 				CurrentScene->DespawnGameObject(this);
+			}
+			else
+			{
+				printf("enemy를 찾을 수 없음");
 			}
 		}
 	}

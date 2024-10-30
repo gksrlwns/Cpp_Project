@@ -6,6 +6,7 @@ struct FlipbookRendererInfo
 	wstring FlipbookKey;
 	int Index = 0;
 	float SumTime = 0.0f;
+	int LastIndex = 0;
 };
 
 class FlipbookRenderer : public Component

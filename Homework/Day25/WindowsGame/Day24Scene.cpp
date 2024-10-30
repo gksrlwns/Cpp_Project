@@ -74,48 +74,56 @@ void Day24Scene::Render(HDC hdc)
 void Day24Scene::Update()
 {
 	Super::Update();
-	
-	_timer += Time->GetDeltaTime();
-	if (_timer >= _spawnTimer)
-	{
-		//Enemy 생성
-		{
-			Day24Enemy* enemy = new Day24Enemy();
-			float ranX = Random->GetFloat(0,300);
-			float ranY = Random->GetFloat(0,300);
-			Vector2 ranPos = Vector2(ranX, ranY);
-			enemy->Init();
-			enemy->SetPos(ranPos);
-			this->SpawnGameObject(enemy);
-			printf("스폰\n");
-		}
-		_timer = 0;
-	}
 
-	if (Input->GetKey(KeyCode::W))
+	//_timer += Time->GetDeltaTime();
+	//if (_timer >= _spawnTimer)
+	//{
+	//	//Enemy 생성
+	//	{
+	//		Day24Enemy* enemy = new Day24Enemy();
+	//		float ranX = Random->GetFloat(0, 300);
+	//		float ranY = Random->GetFloat(0, 300);
+	//		Vector2 ranPos = Vector2(ranX, ranY);
+	//		enemy->Init();
+	//		enemy->SetPos(ranPos);
+	//		this->SpawnGameObject(enemy);
+	//		printf("스폰\n");
+	//	}
+	//	_timer = 0;
+	//}
+#pragma region KeyInput
 	{
-		_creature->SetDir(Day24CreatureDir::Up);
-		_creature->SetState(Day24CreatureState::Move);
+		Vector2 inputDir = {};
+		if (Input->GetKey(KeyCode::W))
+		{
+			inputDir.y -= 1;
+		}
+		if (Input->GetKey(KeyCode::S))
+		{
+			inputDir.y += 1;
+		}
+		if (Input->GetKey(KeyCode::A))
+		{
+			inputDir.x -= 1;
+		}
+		if (Input->GetKey(KeyCode::D))
+		{
+			inputDir.x += 1;
+		}
+		inputDir = inputDir.Normalize();
+		_creature->SetInputDir(inputDir);
 	}
-	else if (Input->GetKey(KeyCode::S))
+	if (Input->GetKeyDown(KeyCode::LeftMouse))
 	{
-		_creature->SetDir(Day24CreatureDir::Down);
-		_creature->SetState(Day24CreatureState::Move);
+		//화면상에서의 좌표는 GetPos로 하면 안됨.
+		Vector2 dir = Input->GetMousePosVector2() - _creature->GetScreenPos();
+		dir = dir.Normalize();
+		_creature->Shoot(dir);
 	}
-	else if (Input->GetKey(KeyCode::A))
-	{
-		_creature->SetDir(Day24CreatureDir::Left);
-		_creature->SetState(Day24CreatureState::Move);
-	}
-	else if (Input->GetKey(KeyCode::D))
-	{
-		_creature->SetDir(Day24CreatureDir::Right);
-		_creature->SetState(Day24CreatureState::Move);
-	}
-	else
-	{
-		_creature->SetState(Day24CreatureState::Idle);
-	}
+#pragma endregion
+
+
+	
 
 	//게임오브젝트가 Input을 가지고있을일이 없다고생각하셔도 무방합니다.
 	// 플레이어니까 플레이어에서 인풋받아서 하고싶은데요?
@@ -126,12 +134,7 @@ void Day24Scene::Update()
 	// 둘다 움직이는 기괴한 버그가 나옵니다.
 	// isMine 이런변수둬서 따로처리해야하거든요
 	// 그것도 Scene에서 Key Input받고 원하는 객체로 행동을 하도록 명령넣어주는게 더 말이되죠
-	if (Input->GetKeyDown(KeyCode::LeftMouse))
-	{
-		Vector2 dir = Input->GetMousePosVector2() - _creature->GetPos();
-		dir = dir.Normalize();
-		_creature->Shoot(dir);
-	}
+	
 
 	
 	/*if (Input->GetKeyDown(KeyCode::J))
