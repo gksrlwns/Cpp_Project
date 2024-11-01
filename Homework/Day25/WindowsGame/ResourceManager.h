@@ -4,6 +4,7 @@ class ResourceBase;
 class Texture;
 class Sprite;
 class Flipbook;
+class Tilemap;
 class ResourceManager
 {
 	DECLARE_SINGLE(ResourceManager);
@@ -21,6 +22,9 @@ public:
 
 	Flipbook* CreateFlipbook(const wstring& key, FlipbookInfo info);
 	Flipbook* GetFlipbook(const wstring& key);
+
+	Tilemap* LoadTilemap(const wstring& key, const wstring& path);
+	Tilemap* GetTilemap(const wstring& key);
 
 private:
 	wstring _resourcePath;

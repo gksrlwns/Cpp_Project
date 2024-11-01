@@ -16,6 +16,7 @@ public:
 	inline void SetName(string name) { _name = name; }
 
 	inline Vector2 GetPos() { return _body.pos; }
+	Vector2 GetScreenPos();
 	inline void SetPos(Vector2 pos) { _body.pos = pos; }
 
 	inline void SetWidth(float width) { _body.width = width; }

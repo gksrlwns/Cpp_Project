@@ -15,7 +15,6 @@ void CameraComponent::Update()
 	Super::Update();
 
 	Vector2 pos = this->GetOwner()->GetPos();
-
 	//혹시 pos이 CameraArea을 넘었는지 확인
 	// 넘었으면 Clamp 처리
 	CenterRect cameraArea = CurrentScene->GetCameraArea();

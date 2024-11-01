@@ -18,7 +18,8 @@ void SpriteRenderer::Render(HDC hdc)
 	GameObject* owner = this->GetOwner();
 
 	if (owner == nullptr) return;
-
+	//카메라의 좌표에 맞춰 오브젝트의 좌표를 빼줌
+	// Renderer에 모두 적용 (Box, Flipbook)
 	Vector2 pos = owner->GetPos();
 	Vector2 cameraPos = CurrentScene->GetCameraPos();
 	Vector2Int renderPos = { 

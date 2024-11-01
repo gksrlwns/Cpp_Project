@@ -181,6 +181,12 @@
     <ClCompile Include="Day24Enemy.cpp">
       <Filter>02.Objects\Day24</Filter>
     </ClCompile>
+    <ClCompile Include="Tilemap.cpp">
+      <Filter>04.Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Day26Scene.cpp">
+      <Filter>03.Scenes\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Comment01.md">
@@ -246,6 +252,10 @@
     <None Include="Comment21.md">
       <Filter>Comment</Filter>
     </None>
+    <None Include="Comment22.md">
+      <Filter>Comment</Filter>
+    </None>
+    <None Include="Comment23.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -385,6 +395,12 @@
     </ClInclude>
     <ClInclude Include="Day24Enemy.h">
       <Filter>02.Objects\Day24</Filter>
+    </ClInclude>
+    <ClInclude Include="Tilemap.h">
+      <Filter>04.Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Day26Scene.h">
+      <Filter>03.Scenes\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
