@@ -5,6 +5,7 @@
 #include "Tilemap.h"
 #include "BoxRenderer.h"
 #include "BoxCollider.h"
+#include "TextBox.h"
 void Day27TileMapTool::Init()
 {
 	Super::Init();
@@ -41,8 +42,7 @@ void Day27TileMapTool::Init()
 	{
 		vector<Sprite*> sprites;
 
-		sprites.push_back(nullptr);
-		for (int i = 1; i <= 17; i++)
+		for (int i = 0; i <= 17; i++)
 		{
 			wstring tileTextureFileName = format(L"Day26/tile_{:02d}.bmp", i);
 			wstring tileTextureKeyName = format(L"T_Tile_{:02d}", i);
@@ -53,31 +53,83 @@ void Day27TileMapTool::Init()
 
 			sprites.push_back(sprite);
 		}
+#pragma region MakeTileListMap
 
-		//Tilemap 로드
-		//Tilemap* tilemap = Resource->LoadTilemap(L"TM_Test", L"Day26/map.txt", sprites);
 		_tilemapList = new Tilemap();
 		_tilemapList->SetMapSize({ 10,2 });
 		_tilemapList->SetSprites(sprites);
-		auto _tiles = vector<vector<Tile>>(2, vector<Tile>(_tilemapList->GetMapSize().x));
-		for (int i = 0; i < _tilemapList->GetMapSize().y; i++)
 		{
-			for (int j = 0; j < _tilemapList->GetMapSize().x; j++)
+			int x = _tilemapList->GetMapSize().x;
+			int y = _tilemapList->GetMapSize().y;
+			auto _tiles = vector<vector<Tile>>(y, vector<Tile>(x));
+			for (int i = 0; i < y; i++)
 			{
-				_tiles[i][j].Value = (i* _tilemapList->GetMapSize().x) + j+1;
+				for (int j = 0; j < x; j++)
+				{
+					_tiles[i][j].Value = (i * x) + j + 1;
+				}
 			}
+			_tilemapList->SetTiles(_tiles);
 		}
-		_tilemapList->SetTiles(_tiles);
 
+		
+#pragma endregion
+		
+#pragma region MakeDrawTilemap
+		_tilemapDraw = new Tilemap();
+		_tilemapDraw->SetMapSize({ WIN_SIZE_X / _tilemapList->GetTileSize().x +1,
+			(WIN_SIZE_Y - (static_cast<int>(_tilemapList->GetTileSize().y)) * 2) / _tilemapList->GetTileSize().y + 1 });
+		{
+			int x = _tilemapDraw->GetMapSize().x;
+			int y = _tilemapDraw->GetMapSize().y;
+			auto _tiles = vector<vector<Tile>>(y, vector<Tile>(x));
+			for (int i = 0; i < y; i++)
+			{
+				for (int j = 0; j < x; j++)
+				{
+					_tiles[i][j].Value = 0;
+				}
+			}
+			_tilemapDraw->SetTiles(_tiles);
+		}
+		
+		_tilemapDraw->SetSprites(sprites);
 		{
 			GameObject* gameObject = new GameObject();
-			
-			gameObject->SetPos({ 0, WIN_SIZE_Y - (static_cast<float>(_tilemapList->GetTileSize().y)) * 2});
+
+			gameObject->SetPos({ 0, 1 });
+			{
+				TilemapRenderer* component = new TilemapRenderer();
+				TilemapRendererInfo info;
+				info.Tilemap = _tilemapDraw;
+				component->SetInfo(info);
+				gameObject->AddComponent(component);
+				_tilemapDrawRenderer = component;
+			}
+			{
+				BoxCollider* component = new BoxCollider();
+				component->SetCollision(CenterRect::MakeLTWH(0,
+					0,
+					WIN_SIZE_X,
+					WIN_SIZE_Y - static_cast<float>(_tilemapList->GetTileSize().y) * 2));
+				gameObject->AddComponent(component);
+				_tilemapDrawBoxCollider = component;
+			}
+
+			this->SpawnGameObject(gameObject);
+			_tilemapDrawGameObject = gameObject;
+		}
+#pragma endregion
+		{
+			GameObject* gameObject = new GameObject();
+
+			gameObject->SetPos({ 0, WIN_SIZE_Y - (static_cast<float>(_tilemapList->GetTileSize().y)) * 2 });
 			{
 				TilemapRenderer* component = new TilemapRenderer();
 				TilemapRendererInfo info;
 				info.Tilemap = _tilemapList;
 				component->SetInfo(info);
+				component->SetIgnoreCamPos(true);
 				gameObject->AddComponent(component);
 				_tilemapListRenderer = component;
 			}
@@ -85,15 +137,43 @@ void Day27TileMapTool::Init()
 				BoxCollider* component = new BoxCollider();
 				component->SetCollision(CenterRect::MakeLTWH(0,
 					0,
-					WIN_SIZE_X,
+					WIN_SIZE_X - 50,
 					static_cast<float>(_tilemapList->GetTileSize().y) * 2));
 				gameObject->AddComponent(component);
 				_tilemapListBoxCollider = component;
 			}
-	
+
 			this->SpawnGameObject(gameObject);
 			_tilemapListGameObject = gameObject;
 		}
+		
+//#pragma region Save&Load
+//		{
+//			GameObject* gameObject = new GameObject();
+//
+//			gameObject->SetBody(CenterRect::MakeLTWH(WIN_SIZE_X - 50, WIN_SIZE_X - 100, 50, 50));
+//			gameObject->SetPos({ WIN_SIZE_X - 50, WIN_SIZE_X - 100 });
+//			{
+//				BoxCollider* component = new BoxCollider();
+//				component->SetCollision(CenterRect::MakeLTWH(WIN_SIZE_X - 50, WIN_SIZE_X - 100, 50, 50));
+//				gameObject->AddComponent(component);
+//				saveBoxCollider = component;
+//			}
+//			{
+//				TextBox* component = new TextBox();
+//				BoxRendererInfo info;
+//				info.Brush = { GRAY_BRUSH };
+//				component->SetInfo(info);
+//				component->SetText(L"Save");
+//				component->SetIgnoreCamPos(true);
+//				gameObject->AddComponent(component);
+//			}
+//
+//			this->SpawnGameObject(gameObject);
+//		}
+//#pragma endregion
+
+		this->SetCameraArea(CenterRect::MakeLTWH(0, 0, WIN_SIZE_X, WIN_SIZE_Y));
 	}
 }
 void Day27TileMapTool::Render(HDC hdc)
@@ -109,78 +189,74 @@ void Day27TileMapTool::Render(HDC hdc)
 void Day27TileMapTool::Update()
 {
 	Super::Update();
-	if (Input->GetKeyDown(KeyCode::LeftMouse))
+	if (Input->GetKey(KeyCode::LeftMouse))
 	{
-		if (!Collision::PtInRect(Input->GetMousePos(), _tilemapListBoxCollider->GetCollision().ToRect()))
+		//printf("GetMousePosVector2{%f,%f}\n", Input->GetMousePosVector2().x, Input->GetMousePosVector2().y);
+		if (Collision::PtInRect((Input->GetMousePos()), _tilemapListBoxCollider->GetCollision().ToRect()))
 		{
-			return;
+			Vector2 temp = Input->GetMousePosVector2() - _tilemapListGameObject->GetPos();
+			int x = static_cast<int>(temp.x / _tilemapList->GetTileSize().x);
+			int y = static_cast<int>(temp.y / _tilemapList->GetTileSize().y);
+			if (x >= _tilemapList->GetMapSize().x || y >= _tilemapList->GetMapSize().y)
+			{
+				_choiceTileValue = 0;
+				printf("선택 영역을 넘어섬");
+				return;
+			}
+			Tile tile = _tilemapList->GetTileAt({ x, y });
+			_choiceTileValue = tile.Value;
+			if (_choiceTileValue > 17)
+			{
+				_choiceTileValue = 0;
+			}
+			
+			printf("ChoiceValue : {%d}\n", _choiceTileValue);
 		}
-		Tilemap* tilemap = _tilemapListRenderer->GetInfo().Tilemap;
-		if (tilemap == nullptr)
+		else if(Collision::PtInRect(Input->GetMousePos(), _tilemapDrawBoxCollider->GetCollision().ToRect()))
 		{
-			return;
+			Vector2 temp = (Input->GetMousePosVector2() + _cameraPosition) - _tilemapDrawGameObject->GetPos();
+			/*printf("GetMousePosVector2{%f,%f}\n", Input->GetMousePosVector2().x, Input->GetMousePosVector2().y);
+			printf("_tilemapDrawGameObject{%f,%f}\n", _tilemapDrawGameObject->GetPos().x, _tilemapDrawGameObject->GetPos().y);
+			printf("Temp{%f,%f}\n", temp.x, temp.y);*/
+			int x = static_cast<int>(temp.x / _tilemapList->GetTileSize().x);
+			int y = static_cast<int>(temp.y / _tilemapList->GetTileSize().y);
+			printf("Draw 영역{%d,%d}\n", x, y);
+			Tile tile;
+			tile.Value = _choiceTileValue;
+			_tilemapDraw->SetTileAt({ x,y }, tile);
 		}
-		//_tilemap->GetPos() + 인덱스 * _tilemap->GetTileSize()
-		//Input->GetMousePosVector2().x 이 좌표가 타일맵의 어떤 인덱스인지 구하는 공식
-		Vector2 temp = Input->GetMousePosVector2() - _tilemapListGameObject->GetPos();
-		int x = static_cast<int>(temp.x / tilemap->GetTileSize().x);
-		int y = static_cast<int>(temp.y / tilemap->GetTileSize().y);
-		Tile tile = tilemap->GetTileAt({ x, y });
-		if (tile.Value > 17)
-		{
-			_choiceTileValue = 0;
-		}
-		_choiceTileValue = tile.Value;
-		printf("ChoiceValue : {%d}", _choiceTileValue);
+		
 	}
 
-	/*
-	if (Input->GetKeyDown(KeyCode::LeftMouse))
+	if (Input->GetKey(KeyCode::S)) 
 	{
-		// 1. 해당위치의 타일을 가져온다
-		Tilemap* tilemap = _tilemapRenderer->GetInfo().Tilemap;
-		if (tilemap == nullptr)
-		{
-			return;
-		}
-
-		//GetTileAt를 사용하기위해서는 인덱스 계산이 필요합니다.
-		// 실제 위치
-		//_tilemap->GetPos() + 인덱스 * _tilemap->GetTileSize()
-		//Input->GetMousePosVector2().x 이 좌표가 타일맵의 어떤 인덱스인지 구하는 공식
-		Vector2 temp = Input->GetMousePosVector2() - _tilemapGameObject->GetPos();
-		int x = static_cast<int>(temp.x / tilemap->GetTileSize().x);
-		int y = static_cast<int>(temp.y / tilemap->GetTileSize().y);
-
-		//cout << "X : " << x << endl;
-		//cout << "Y : " << y << endl;
-		Tile tile = tilemap->GetTileAt({ x, y });
-
-		// 2. 해당 타일의 값을 1올린다.
-		tile.Value += 1;
-		if (tilemap->GetSprites().size() <= tile.Value)
-		{
-			tile.Value = 1;
-		}
-
-		// 3. 해당 타일을 적용한다.
-		tilemap->SetTileAt({ x, y }, tile);
+		_cameraPosition -= Vector2::Down() * 100 * Time->GetDeltaTime();
 	}
-
-	if (Input->GetKeyDown(KeyCode::S))
+	if (Input->GetKey(KeyCode::W))
 	{
-		Tilemap* tilemap = _tilemapRenderer->GetInfo().Tilemap;
+		_cameraPosition -= Vector2::Up() * 100 * Time->GetDeltaTime();
+	}
+	if (Input->GetKey(KeyCode::A))
+	{
+		_cameraPosition -= Vector2::Left() * 100 * Time->GetDeltaTime();
+	}
+	if (Input->GetKey(KeyCode::D))
+	{
+		_cameraPosition -= Vector2::Right() * 100 * Time->GetDeltaTime();
+	}
+	/*if (Input->GetKeyDown(KeyCode::S))
+	{
+		Tilemap* tilemap = _tilemapDrawRenderer->GetInfo().Tilemap;
 
 		tilemap->SaveFile(L"../Resources/Day26/newMap.txt");
 	}
 
 	if (Input->GetKeyDown(KeyCode::L))
 	{
-		Tilemap* tilemap = _tilemapRenderer->GetInfo().Tilemap;
+		Tilemap* tilemap = _tilemapDrawRenderer->GetInfo().Tilemap;
 
 		tilemap->LoadFile(L"../Resources/Day26/newMap.txt");
-	}
-	*/
+	}*/
 }
 void Day27TileMapTool::Release()
 {

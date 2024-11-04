@@ -20,9 +20,12 @@ public:
 public:
 	void SetInfo(SpriteRendererInfo info) { _info = info; }
 	SpriteRendererInfo GetInfo() { return _info; }
+	void SetIgnoreCmaPos(bool ignoreCamPos) { _ignoreCamPos = ignoreCamPos; }
+	bool GetIgnoreCmaPos() { return _ignoreCamPos; }
 
 protected:
 	SpriteRendererInfo _info;
+	bool _ignoreCamPos = false;
 };
 
 

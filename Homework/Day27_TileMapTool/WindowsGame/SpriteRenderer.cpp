@@ -20,11 +20,15 @@ void SpriteRenderer::Render(HDC hdc)
 	if (owner == nullptr) return;
 
 	Vector2 pos = owner->GetPos();
-	Vector2 cameraPos = CurrentScene->GetCameraPos();
-	Vector2Int renderPos = { 
-		static_cast<int>(pos.x + _info.Offset.x - cameraPos.x), 
-		static_cast<int>(pos.y + _info.Offset.y - cameraPos.y)
-	};
+	Vector2Int renderPos = { static_cast<int>(pos.x), static_cast<int>(pos.y) };
+	if (!_ignoreCamPos)
+	{
+		Vector2 cameraPos = CurrentScene->GetCameraPos();
+		renderPos = {
+			static_cast<int>(pos.x + _info.Offset.x - cameraPos.x),
+			static_cast<int>(pos.y + _info.Offset.y - cameraPos.y)
+		};
+	}
 
 	sprite->Render(hdc, renderPos.x, renderPos.y);
 }

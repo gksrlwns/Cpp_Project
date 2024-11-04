@@ -20,8 +20,11 @@ public:
 public:
 	void SetInfo(TilemapRendererInfo info) { _info = info; }
 	TilemapRendererInfo GetInfo() { return _info; }
+	void SetIgnoreCamPos(bool ignoreCamPos) { _ignoreCamPos = ignoreCamPos; }
+	bool GetIgnoreCmaPos() { return _ignoreCamPos; }
 
 protected:
 	TilemapRendererInfo _info;
+	bool _ignoreCamPos = false;
 };
 

@@ -23,12 +23,15 @@ void TilemapRenderer::Render(HDC hdc)
 	Vector2 pos;
 	pos.x = owner->GetPos().x + _info.Tilemap->GetTileSize().x / 2;
 	pos.y = owner->GetPos().y + _info.Tilemap->GetTileSize().y / 2;
-
-	Vector2 cameraPos = CurrentScene->GetCameraPos();
-	Vector2Int renderPos = {
-		static_cast<int>(pos.x - cameraPos.x),
-		static_cast<int>(pos.y - cameraPos.y)
-	};
+	Vector2Int renderPos = { static_cast<int>(pos.x), static_cast<int>(pos.y) };
+	if (!_ignoreCamPos)
+	{
+		Vector2 cameraPos = CurrentScene->GetCameraPos();
+		renderPos = {
+			static_cast<int>(pos.x - cameraPos.x),
+			static_cast<int>(pos.y - cameraPos.y)
+		};
+	}
 
 	_info.Tilemap->Render(hdc, renderPos.x, renderPos.y);
 

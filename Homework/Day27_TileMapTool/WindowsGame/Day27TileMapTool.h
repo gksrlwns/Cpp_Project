@@ -21,7 +21,11 @@ private:
 private:
 	GameObject* _tilemapDrawGameObject = nullptr;
 	TilemapRenderer* _tilemapDrawRenderer = nullptr;
+	BoxCollider* _tilemapDrawBoxCollider = nullptr;
 	Tilemap* _tilemapDraw = nullptr;
-
+private:
+	GameObject* saveGameObject = nullptr;
+	BoxCollider* saveBoxCollider = nullptr;
+	
 };
 

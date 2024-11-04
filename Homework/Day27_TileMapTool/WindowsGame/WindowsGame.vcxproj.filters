@@ -196,6 +196,7 @@
     <ClCompile Include="Day27TileMapTool.cpp">
       <Filter>03.Scenes\Game</Filter>
     </ClCompile>
+    <ClCompile Include="TextBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Comment01.md">
@@ -425,5 +426,6 @@
     <ClInclude Include="Day27TileMapTool.h">
       <Filter>03.Scenes\Game</Filter>
     </ClInclude>
+    <ClInclude Include="TextBox.h" />
   </ItemGroup>
 </Project>

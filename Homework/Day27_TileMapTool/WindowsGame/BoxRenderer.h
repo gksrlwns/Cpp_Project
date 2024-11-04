@@ -16,10 +16,10 @@ public:
 	virtual void Release();
 
 public:
-	void SetInfo(BoxRendererInfo info) { _info = info; }
-	BoxRendererInfo GetInfo() { return _info; }
+	virtual void SetInfo(BoxRendererInfo info) { _info = info; }
+	virtual BoxRendererInfo GetInfo() { return _info; }
 
-private:
+protected:
 	BoxRendererInfo _info;
 };
 
